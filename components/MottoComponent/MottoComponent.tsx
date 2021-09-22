@@ -43,7 +43,7 @@ const MottoComponent = (props: MottoComponentProps) => {
                     size={"large"}
                     variant={"contained"}
                 >
-                    Go to dashboard
+                    Open the hub
                 </Button>
             </Grid>
         </Grid>
