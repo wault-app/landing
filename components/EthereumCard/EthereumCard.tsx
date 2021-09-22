@@ -34,6 +34,7 @@ const intervals = {
 export type EthereumCardProps = CardProps;
 
 const EthereumCard = (props: EthereumCardProps) => {
+    const [price, setPrice] = useState<number>();
     const [prices, setPrices] = useState<{ date: Date, value: number }[]>();
     const [error, setError] = useState<Error>();
     const [interval, setInterval] = useState<keyof typeof intervals>("week");
@@ -41,15 +42,22 @@ const EthereumCard = (props: EthereumCardProps) => {
     const theme = useTheme();
 
     useEffect(() => {
-        (async () => {
-            setPrices(null);
+        gecko.simple.price({
+            ids: ["ethereum"],
+            vs_currencies: ["EUR"],
+        }).then((resp) => {
+            setPrice(resp.data.ethereum.eur);
+        });
+    }, []);
 
-            // @ts-ignore
-            const { success, data } = await gecko.coins.fetchMarketChart("ethereum", {
-                vs_currency: "EUR",
-                days: intervals[interval].days,
-            })
+    useEffect(() => {
+        setPrices(null);
 
+        // @ts-ignore
+        const { success, data } = gecko.coins.fetchMarketChart("ethereum", {
+            vs_currency: "EUR",
+            days: intervals[interval].days,
+        }).then(({ success, data }) => {
             if (!success) setError(new Error("Could not load data!"));
             const unformatted: ([number, number])[] = data.prices;
 
@@ -67,7 +75,7 @@ const EthereumCard = (props: EthereumCardProps) => {
             setPrices(
                 newPrices
             );
-        })();
+        });
     }, [interval]);
 
     const balance = 3;
@@ -81,8 +89,8 @@ const EthereumCard = (props: EthereumCardProps) => {
         <Card {...props} sx={{ pb: 1 }}>
             <CardContent>
                 <Typography variant={"h5"} sx={{ fontWeight: "bold" }}>
-                    {prices ? (
-                        `${balance * prices[prices.length - 1].value} €`
+                    {price ? (
+                        `${balance * price} €`
                     ) : (
                         <Skeleton />
                     )}
