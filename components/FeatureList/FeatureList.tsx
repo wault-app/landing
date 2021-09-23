@@ -6,6 +6,7 @@ import AccountCard from "@components/AccountCard";
 import EthereumCard from "@components/EthereumCard";
 import EthereumIcon from "@components/EthereumIcon";
 import TwoFactorAuthenticationIcon from "@components/TwoFactorAuthenticationIcon";
+import TwoFactorCard from "@components/TwoFactorCard";
 
 export type FeatureListProps = {};
 
@@ -108,8 +109,10 @@ const FeatureList = (props: FeatureListProps) => {
             <Grid item xs={12} md={6} sx={{ height: 478 }}>
                 {selected === "account" ? (
                     <AccountCard />
-                ) : selected === "ethereum" && (
+                ) : selected === "ethereum" ? (
                     <EthereumCard />
+                ) : selected === "totp" && (
+                    <TwoFactorCard />
                 )}
             </Grid>
         </Grid>
