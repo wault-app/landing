@@ -7,6 +7,7 @@ import EthereumCard from "@components/EthereumCard";
 import EthereumIcon from "@components/EthereumIcon";
 import TwoFactorAuthenticationIcon from "@components/TwoFactorAuthenticationIcon";
 import TwoFactorCard from "@components/TwoFactorCard";
+import CreditCard from "@components/CreditCard";
 
 export type FeatureListProps = {};
 
@@ -111,8 +112,10 @@ const FeatureList = (props: FeatureListProps) => {
                     <AccountCard />
                 ) : selected === "ethereum" ? (
                     <EthereumCard />
-                ) : selected === "totp" && (
+                ) : selected === "totp" ? (
                     <TwoFactorCard />
+                ) : selected === "credit-card" && (
+                    <CreditCard />
                 )}
             </Grid>
         </Grid>
