@@ -18,7 +18,14 @@ const theme = createTheme({
             styleOverrides: {
                 contained: {
                     background: `linear-gradient(45deg, ${primary[500]} 0%, ${secondary[500]} 100%)`
-                }
+                },
+            }
+        },
+        MuiTypography: {
+            styleOverrides: {
+                h5: {
+                    fontWeight: "bold",
+                },
             }
         }
     }

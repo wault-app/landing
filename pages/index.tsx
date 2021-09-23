@@ -1,3 +1,4 @@
+import EncryptionBlock from "@components/EncryptionBlock/EncryptionBlock";
 import FeatureList from "@components/FeatureList/FeatureList";
 import MottoComponent from "@components/MottoComponent";
 import Navbar from "@components/Navbar";
@@ -13,6 +14,9 @@ const HomePage = () => {
             </Container>
             <Container maxWidth={"md"}>
                 <FeatureList />
+            </Container>
+            <Container maxWidth={"md"}>
+                <EncryptionBlock />
             </Container>
         </Fragment>
     );

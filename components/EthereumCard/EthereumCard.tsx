@@ -1,6 +1,6 @@
 import { Card, CardContent, CardProps, Grid, ListItem, ListItemIcon, ListItemText, Skeleton, ToggleButton, ToggleButtonGroup, Typography, useTheme } from "@mui/material";
 import CoinGecko from "coingecko-api";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { renderToString } from "react-dom/server";
 import { Box } from "@mui/system";
