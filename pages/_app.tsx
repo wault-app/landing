@@ -36,6 +36,7 @@ const MyApp = ({ Component, pageProps }) => {
         <ThemeProvider theme={theme}>
             <Head>
                 <title>Wault</title>
+                <meta name="theme-color" content={"#090909"} />
             </Head>
             <CssBaseline />
             <Component {...pageProps} />

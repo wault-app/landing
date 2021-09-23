@@ -36,14 +36,14 @@ const Navbar = (props: NavbarProps) => {
         <AppBar
             {...props}
             sx={{
+                ...props.sx,
                 backdropFilter: "blur(16px)",
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                background: "rgba(0, 0, 0, 0.8)"
             }}
         >
-            <Toolbar sx={{ backgroundColor: "transparent" }}>
+            <Toolbar sx={{}}>
                 <ThemeProvider theme={customTheme}>
                     <Grid container spacing={1} alignItems={"center"}>
-
                         {links.map((link) => (
                             <Grid item key={`navbar-link-${link.label}`}>
                                 <Button>
