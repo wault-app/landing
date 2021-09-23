@@ -81,7 +81,7 @@ const EthereumCard = (props: EthereumCardProps) => {
     const balance = 3;
     const stats = prices ? {
         positive: prices[0].value < prices[prices.length - 1].value,
-        percentage: Math.floor(Math.abs(prices[prices.length - 1].value / prices[0].value - 1) * 10000) / 100,
+        percentage: (Math.abs(prices[prices.length - 1].value / prices[0].value - 1) * 100).toFixed(2),
         color: prices[0].value < prices[prices.length - 1].value ? theme.palette.primary.main : theme.palette.error.main
     } : null;
 
@@ -90,7 +90,7 @@ const EthereumCard = (props: EthereumCardProps) => {
             <CardContent>
                 <Typography variant={"h5"} sx={{ fontWeight: "bold" }}>
                     {price ? (
-                        `${balance * price} €`
+                        `${(balance * price).toFixed(4)} €`
                     ) : (
                         <Skeleton />
                     )}
