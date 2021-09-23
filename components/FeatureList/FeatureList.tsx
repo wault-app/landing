@@ -4,6 +4,8 @@ import { PersonRounded as UserIcon, CreditCardRounded as CreditCardIcon } from "
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import AccountCard from "@components/AccountCard";
 import EthereumCard from "@components/EthereumCard";
+import EthereumIcon from "@components/EthereumIcon";
+import TwoFactorAuthenticationIcon from "@components/TwoFactorAuthenticationIcon";
 
 export type FeatureListProps = {};
 
@@ -15,18 +17,18 @@ const features: { [key: string]: FeatureType } = {
     },
     "credit-card": {
         title: "Credit/Debit card",
-        description: "Store your card informations such as card number, cardholder's name or CVC code.",
+        description: "Use your card for faster checkouts.",
         Icon: CreditCardIcon,
     },
     "totp": {
         title: "Two factor authentication",
-        description: "Store your 2FA key and you won't ever need your phone to log into somewhere again!",
-        Icon: CreditCardIcon,
+        description: "You wont ever need again your phone to sign in.",
+        Icon: TwoFactorAuthenticationIcon,
     },
     "ethereum": {
         title: "Ethereum wallet",
         description: "Store your Ethereum wallet and check it conviniently!",
-        Icon: CreditCardIcon,
+        Icon: EthereumIcon,
     }
 };
 
@@ -78,20 +80,22 @@ const FeatureList = (props: FeatureListProps) => {
                                     borderRadius: `${theme.shape.borderRadius}px`,
                                     borderWidth: 1,
                                     borderStyle: "solid",
+                                    transition: "background-color 0.12s ease-in-out",
+                                    backgroundColor: key === selected ? `${theme.palette.primary.light}20` : undefined,
                                     borderColor: selected === key ? theme.palette.primary.main : "transparent",
                                 }}
                             >
                                 <Grid container spacing={1} alignItems={"center"}>
-                                    <Grid item>
+                                    <Grid item xs={12} sx={{ textAlign: "left" }}>
                                         <Icon
                                             fontSize={"large"}
                                         />
                                     </Grid>
-                                    <Grid item>
-                                        <Typography variant={"h6"} align={"left"} sx={{ lineHeight: 1, fontWeight: 600 }} gutterBottom>
+                                    <Grid item xs={12}>
+                                        <Typography variant={"h6"} align={"left"} sx={{ lineHeight: 1, fontWeight: 600 }} noWrap gutterBottom>
                                             {title}
                                         </Typography>
-                                        <Typography variant={"body2"} align={"left"} sx={{ fontSize: "14px" }}>
+                                        <Typography variant={"body2"} align={"left"} sx={{ fontSize: "14px" }} noWrap>
                                             {description}
                                         </Typography>
                                     </Grid>
@@ -101,7 +105,7 @@ const FeatureList = (props: FeatureListProps) => {
                     ))}
                 </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{ height: 478 }}>
                 {selected === "account" ? (
                     <AccountCard />
                 ) : selected === "ethereum" && (
