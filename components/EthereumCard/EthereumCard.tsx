@@ -125,47 +125,49 @@ const EthereumCard = (props: EthereumCardProps) => {
                     </Grid>
                 </Grid>
             </CardContent>
-            {prices && BaseChart ? (
-                <BaseChart
-                    height={200}
-                    options={{
-                        chart: {
-                            animations: {
-                                enabled: false,
+            <Box sx={{ height: 215, width: "100%"}}>
+                {prices && BaseChart ? (
+                    <BaseChart
+                        height={200}
+                        options={{
+                            chart: {
+                                animations: {
+                                    enabled: false,
+                                },
                             },
-                        },
-                        stroke: {
-                            dashArray: [0, 4],
-                            colors: [prices[0].value > prices[prices.length - 1].value ? theme.palette.error.main : theme.palette.primary.main, theme.palette.mode === "dark" ? theme.palette.primary.contrastText : theme.palette.grey[500]]
-                        },
-                        tooltip: {
-                            custom: ({ dataPointIndex }: { dataPointIndex: number }) => {
-                                return renderToString(
-                                    <Box sx={{ p: 1, backgroundColor: "#121212", color: "#ffffff" }}>
-                                        <Typography>
-                                            {`${prices[dataPointIndex].value} €`}
-                                        </Typography>
-                                        <Typography variant={"body2"}>
-                                            {prices[dataPointIndex].date.toLocaleString()}
-                                        </Typography>
-                                    </Box>
-                                );
+                            stroke: {
+                                dashArray: [0, 4],
+                                colors: [prices[0].value > prices[prices.length - 1].value ? theme.palette.error.main : theme.palette.primary.main, theme.palette.mode === "dark" ? theme.palette.primary.contrastText : theme.palette.grey[500]]
                             },
-                        }
-                    }}
-                    series={[
-                        {
-                            data: prices.map((el) => el.value),
-                        },
-                        {
-                            data: prices.map(() => prices[0].value),
-                        },
-                    ]}
-                    type="line"
-                />
-            ) : (
-                <Skeleton height={215} variant={"rectangular"} />
-            )}
+                            tooltip: {
+                                custom: ({ dataPointIndex }: { dataPointIndex: number }) => {
+                                    return renderToString(
+                                        <Box sx={{ p: 1, backgroundColor: "#121212", color: "#ffffff" }}>
+                                            <Typography>
+                                                {`${prices[dataPointIndex].value} €`}
+                                            </Typography>
+                                            <Typography variant={"body2"}>
+                                                {prices[dataPointIndex].date.toLocaleString()}
+                                            </Typography>
+                                        </Box>
+                                    );
+                                },
+                            }
+                        }}
+                        series={[
+                            {
+                                data: prices.map((el) => el.value),
+                            },
+                            {
+                                data: prices.map(() => prices[0].value),
+                            },
+                        ]}
+                        type="line"
+                    />
+                ) : (
+                    <Skeleton height={215} variant={"rectangular"} />
+                )}
+            </Box>
             <Grid container justifyContent={"center"}>
                 <Grid item>
                     <ToggleButtonGroup size={"small"} sx={{ pt: 2, pb: 2 }}>
