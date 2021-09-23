@@ -1,4 +1,4 @@
-import { Button, Grid, Typography, useTheme } from "@mui/material";
+import { Button, Grid, Link, Typography, useTheme } from "@mui/material";
 import { Box, GridProps } from "@mui/system";
 
 export type MottoComponentProps = GridProps;
@@ -39,12 +39,14 @@ const MottoComponent = (props: MottoComponentProps) => {
                 </Typography>
             </Grid>
             <Grid item xs={12} sx={{ textAlign: "center", mt: 2 }}>
-                <Button
-                    size={"large"}
-                    variant={"contained"}
-                >
-                    Open the hub
-                </Button>
+                <Link href={"https://hub.wault.app"} underline={"none"}>
+                    <Button
+                        size={"large"}
+                        variant={"contained"}
+                    >
+                        Open the hub
+                    </Button>
+                </Link>
             </Grid>
         </Grid>
     );
