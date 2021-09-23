@@ -37,7 +37,7 @@ const EthereumCard = (props: EthereumCardProps) => {
     const [price, setPrice] = useState<number>();
     const [prices, setPrices] = useState<{ date: Date, value: number }[]>();
     const [error, setError] = useState<Error>();
-    const [interval, setInterval] = useState<keyof typeof intervals>("week");
+    const [interval, setInterval] = useState<keyof typeof intervals>("day");
     const gecko = useMemo(() => new CoinGecko(), []);
     const theme = useTheme();
 
