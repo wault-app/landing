@@ -1,6 +1,6 @@
 import FeatureList from "@components/FeatureList/FeatureList";
 import MottoComponent from "@components/MottoComponent";
-import Navbar from "@components/Navbar/Navbar";
+import Navbar from "@components/Navbar";
 import { Container } from "@mui/material";
 import { Fragment } from "react";
 
