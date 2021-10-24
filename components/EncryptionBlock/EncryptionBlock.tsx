@@ -15,7 +15,7 @@ const EncryptionBlock = (props: EncryptionBlockProps) => {
                 </Typography>
                 <Grid container spacing={1} sx={{ mt: 2 }}>
                     <Grid item xs={12}>
-                        <Button variant={"contained"} size={"large"}>
+                        <Button variant={"contained"} size={"large"} disabled>
                             Check documentation
                         </Button>
                     </Grid>
